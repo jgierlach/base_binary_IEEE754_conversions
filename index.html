@@ -29,17 +29,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col s4">
+          <div class="col s12 m4">
             <button class="btn" @click="convertBinaryToDecimal">
               Convert To Decimal
             </button>
           </div>
-          <div class="col s4">
+          <div class="col s12 m4">
             <button class="btn" @click="convertDecimalToBinary">
               Convert To Binary
             </button>
           </div>
-          <div class="col s4">
+          <div class="col s12 m4">
             <button class="btn" @click="iTrippleEFormat">
               Convert To IEEE 754 Format
             </button>
@@ -152,6 +152,8 @@
             }
             // lastly return our array and join it to a string
             this.output = binaryValues.join('')
+            // set the user input equal to the output
+            this.userInput = this.output
 
             // set other boolean values to false
             this.showIEEE = false
