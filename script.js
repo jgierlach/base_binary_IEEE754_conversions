@@ -126,7 +126,7 @@ new Vue({
           `Conversion of values greater than one = ${binaryValues.join('')}`
         )
         this.iEEEOperationsArr.push(
-          `----------------------------------------------------------`
+          `------------------------------------------------------------------------------`
         )
 
         return binaryValues.join('')
@@ -251,14 +251,14 @@ new Vue({
         console.log('conversion so far', conversionSoFar)
 
         this.iEEEOperationsArr.push(
-          `---------------------------------------------------`
+          `-----------------------------------------------------------------------------`
         )
         // update our iEEE opperations array with the conversion so far
         this.iEEEOperationsArr.push(
           `Put the result of these conversion together and this is what we have so far ${conversionSoFar}`
         )
         this.iEEEOperationsArr.push(
-          `----------------------------------------------------`
+          `-----------------------------------------------------------------------------`
         )
         this.iEEEOperationsArr.push(
           `Now we have to calculate our sign bit, exponent, and mantissa`
