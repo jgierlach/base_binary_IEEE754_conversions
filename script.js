@@ -157,9 +157,9 @@ new Vue({
           
           // here we will set the value of the greater or less than one should convert this to a ternary
           if(getValsAfterDecimal(int) * 2 >= 1) {
-            greaterOrLessThanOne = 'which is greater than one so we set aside a 1'
+            greaterOrLessThanOne = 'which is greater than 1 so we set aside a 1'
           } else {
-            greaterOrLessThanOne = 'which is less than one so we set aside a 0'
+            greaterOrLessThanOne = 'which is less than 1 so we set aside a 0'
           }
           // update the iEEE operations array
           this.iEEEOperationsArr.push(`${getValsAfterDecimal(int)} times 2 = ${getValsAfterDecimal(int) * 2} ${greaterOrLessThanOne}`)
@@ -220,11 +220,16 @@ new Vue({
         // Now it's time to convert everything less than 1
         this.iEEEOperationsArr.push(`Now it's time to convert ${lessThanOne}`)
 
-        // from here let figure out our exponent
+        // from here lets figure out our exponent
         const exponent = findExponent(binaryValsGreaterThanOne)
 
         // we caluclate our normalized exponent that will take up 8 bits
         const normalizedExponent = convertExponentToBinary(exponent + 127)
+
+        // Our normalized exponent needs to take up 8 bits if it's only 7 0 should be appended
+        if(normalizedExponent.length == 7) {
+          normalizedExponent = '0' + normalizedExponent
+        }
 
         // lets caluclate the first part of our mantissa
         const firstPartOfMantissa = binaryValsGreaterThanOne.slice(
