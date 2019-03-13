@@ -34,10 +34,10 @@ new Vue({
           )
         }
       }
-      // set the user input data field to be equal to the result of this function
+      // set the output data field to be equal to the result of this function
       this.output = finalValue
       // set the input field to the value of the conversion
-      this.userInput = this.output
+      // this.userInput = this.output
 
       // set other show boolean values to false
       this.showBinaryValue = false
@@ -70,7 +70,7 @@ new Vue({
       // lastly return our array and join it to a string
       this.output = binaryValues.join('')
       // set the user input equal to the output
-      this.userInput = this.output
+      // this.userInput = this.output
 
       // set other boolean values to false
       this.showIEEE = false
