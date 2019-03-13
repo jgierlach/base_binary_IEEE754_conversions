@@ -52,7 +52,27 @@
         class="row container center white-background move-down padding z-depth-4"
       >
         <div class="col s12">
-          <h3>{{ output }}</h3>
+          <h5 v-for="operation in iEEEOperationsArr">
+            {{ operation }}
+          </h5>
+          <table class="centered responsive-table striped">
+            <thead>
+              <tr>
+                <th>Sign bit</th>
+                <th>Exponent</th>
+                <th>Mantissa</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>{{ signBit }}</td>
+                <td>{{ exponent }}</td>
+                <td>{{ mantissa }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Final answer = {{ output }}</h4>
         </div>
       </div>
 
