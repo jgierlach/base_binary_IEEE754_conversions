@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>repl.it</title>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Import our custom css -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="">
+      <!-- This is the start of our nav bar -->
+      <nav>
+        <div class="nav-wrapper white-background z-depth-3">
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="black-font" href="index.html">Home</a></li>
+            <li><a class="black-font" href="about.html">About</a></li>
+            <li><a class="black-font" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container center white-background padding move-down z-depth-4">
+            <form action="https://formspree.io/jegierlach@gmail.com"
+            method="POST">
+            <!-- This row contains the name fields on the same line -->
+               <div class="row">
+                 <div class="input-field col s6">
+                   <label htmlFor="firstName">first name</label>
+                   <input id="firstName" type="text" name="name" />
+                 </div>
+                 <div class="input-field col s6">
+                   <label htmlFor="lastName">last name</label>
+                   <input id="lastName" type="text" name="name" />
+                 </div>
+               </div>
+               <!-- This row contains the email field -->
+               <div class="row">
+                 <div class="input-field col s12">
+                   <label htmlFor="email">email</label>
+                   <input id="email" class="validate" type="email" name="_replyto" />
+                 </div>
+               </div>
+                <!-- This row contains the message textarea -->
+               <div class="row">
+                 <div class="input-field col s12">
+                   <label htmlFor="textarea">message</label>
+                   <textarea id="textarea" class="materialize-textarea" type="text" name="message"></textarea>
+                 </div>
+               </div>
+               <!-- This is the submit button -->
+               <button class="btn waves-effect waves-light" type="submit" value="Send">Send
+                  <i class="material-icons right">send</i>
+               </button>
+            </form>
+      </div>
+
+    <!-- Import Vue into our project -->
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <!-- script tag our custom javascript -->
+    <script src="script.js"></script>
+    <!--Script tag for materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

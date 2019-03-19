@@ -24,6 +24,7 @@ new Vue({
       let currentValue = 0
       // Will hold all the binary values in an array so we can iterate over it
       let binaryInArray = [...this.userInput].reverse()
+      console.log(binaryInArray.length)
       // iterate over the array and if the index == 1 then do the power of 2 to i
       for (let i = 0; i < binaryInArray.length; i++) {
         if (binaryInArray[i] == '1') {
@@ -36,8 +37,6 @@ new Vue({
       }
       // set the output data field to be equal to the result of this function
       this.output = finalValue
-      // set the input field to the value of the conversion
-      // this.userInput = this.output
 
       // set other show boolean values to false
       this.showBinaryValue = false
@@ -69,8 +68,6 @@ new Vue({
       }
       // lastly return our array and join it to a string
       this.output = binaryValues.join('')
-      // set the user input equal to the output
-      // this.userInput = this.output
 
       // set other boolean values to false
       this.showIEEE = false
@@ -79,13 +76,13 @@ new Vue({
       this.showBinaryValue = true
     },
     iTrippleEFormat: function() {
-      // Let reset our iEEEOperationsArray to get rid of old entries
+      // reset our iEEEOperationsArray to get rid of old entries
       this.iEEEOperationsArr = []
 
-      if (!this.userInput.includes('.')) {
-        this.output =
-          'You have not entered a floating point value please try again.'
-      }
+      // if (this.userInput.includes('.')) {
+      //   this.output =
+      //     'You have not entered a floating point value please try again.'
+      // }
 
       let numberOfPlacesWeNeedToSolveFor = 0
 
@@ -154,7 +151,7 @@ new Vue({
           } else {
             valsOfDecimal.push(1)
           }
-          
+
           // here we will set the value of the greater or less than one should convert this to a ternary
           if(getValsAfterDecimal(int) * 2 >= 1) {
             greaterOrLessThanOne = 'which is greater than 1 so we set aside a 1'
@@ -270,14 +267,14 @@ new Vue({
         )
 
        // instructions on how to handle the expoenent
-       this.iEEEOperationsArr.push(`Our exponent is equal to the distance we have to move the decimal for our value to equal 1.something. In this case our exponent is equal to ${exponent}. But we're not done yet! We have to still normalize our exponent. We do this by adding ${exponent} to 127. We will now convert this value to binary and it will take up 8 bits of the allotted 32. Our normalized exponent is equal to ${normalizedExponent}.`)   
+       this.iEEEOperationsArr.push(`Our exponent is equal to the distance we have to move the decimal for our value to equal 1.something. In this case our exponent is equal to ${exponent}. But we're not done yet! We have to still normalize our exponent. We do this by adding ${exponent} to 127. We will now convert this value to binary and it will take up 8 bits of the allotted 32. Our normalized exponent is equal to ${normalizedExponent}.`)
 
         // This is the final mantissa
         const mantissa = firstPartOfMantissa + binaryValsLessThanOne
 
         // instruction on how to handle the mantissa
         this.iEEEOperationsArr.push(`Ok we're almost done! We have to calculate the mantissa. `)
-        
+
         // We're done
         this.iEEEOperationsArr.push(`Ok great work! All that's left is to put together all the pieces we calculated and we'll have our final value. To conclude computers really suck at representing and handling floating point values.`)
 
@@ -316,6 +313,5 @@ const convertExponentToBinary = input => {
     // in case the result of int / 2 is not even we will need to perform math.floor so we get a whole number
     int = Math.floor(int / 2)
   }
-  // append the output of this function to our iEEE operations array
   return binaryValues.join('')
 }

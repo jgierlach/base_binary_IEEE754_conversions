@@ -19,6 +19,17 @@
   </head>
   <body>
     <div id="app">
+      <!-- This is the start of our nav bar -->
+      <nav>
+        <div class="nav-wrapper white-background z-depth-3">
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="black-font" href="index.html">Home</a></li>
+            <li><a class="black-font" href="about.html">About</a></li>
+            <li><a class="black-font" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
       <div
         class="container center white-background padding move-down z-depth-4"
       >
@@ -28,33 +39,78 @@
             <input type="text" v-model="userInput" />
           </div>
         </div>
+        <!-- This row contains the buttons for the initial conversions -->
         <div class="row">
+          <!-- This column contains a button that will convert binary values to base 10 decimal -->
           <div class="col s12 m4">
             <button class="btn" @click="convertBinaryToDecimal">
               Convert To Decimal
             </button>
           </div>
+          <!-- This column contains a button that will convert decimal values base 10 to binary base 2 -->
           <div class="col s12 m4">
             <button class="btn" @click="convertDecimalToBinary">
               Convert To Binary
             </button>
           </div>
+          <!-- This column contains a button that converts floating point values to IEEE 754 format -->
           <div class="col s12 m4">
             <button class="btn" @click="iTrippleEFormat">
               Convert To IEEE 754 Format
             </button>
           </div>
         </div>
+        <!-- This is where the user can immediately see the result of their conversion -->
+        <div class="row">
+          <div class="col s12">
+            <h3 :style="{background: 'yellow'}">{{ output }}</h3>
+          </div>
+        </div>
       </div>
 
+      <!-- This begins the section where we conditionally render different parts of the dom based on what button the user presses  -->
+
+      <!-- This section of the dom appears if the user clicks convert to decimal the result of the binary to decimal conversion along with all the steps will be rendered here -->
       <div
-        v-if="showIEEE"
+        v-if="showDecimalValue"
         class="row container center white-background move-down padding z-depth-4"
       >
         <div class="col s12">
+          <!-- Here is where we are displaying all the steps involved in the conversion -->
+          <h3 v-for="operation in binaryToDecimalConversionArr">
+            {{ operation }}
+          </h3>
+          <!-- Here we display the final answer -->
+          <h1 :style="{background: 'yellow'}">Final answer = {{ output }}</h1>
+        </div>
+      </div>
+
+      <!-- This section of the dom appears if the user clicks convert to binary the result of the binary to decimal conversion along with all the steps will be rendered here -->
+      <div
+        v-else-if="showBinaryValue"
+        class="row container center white-background move-down padding z-depth-4"
+      >
+        <div class="col s12">
+          <!-- Here is where we are displaying all the steps involved in the conversion -->
+          <h3 v-for="operation in decimalToBinaryConversionArr">
+            {{ operation }}
+          </h3>
+          <!-- At the end of the conversion steps the final answer is displayed -->
+          <h1 :style="{background: 'yellow'}">Final answer = {{ output }}</h1>
+        </div>
+      </div>
+
+      <!-- This section of the dom appears if the user clicks convert to IEEE 754 format the result of the conversion along with all the steps will be rendered here -->
+      <div
+        v-else-if="showIEEE"
+        class="row container center white-background move-down padding z-depth-4"
+      >
+        <div class="col s12">
+          <!-- Here is where we are displaying all the steps involved in the conversion -->
           <h5 v-for="operation in iEEEOperationsArr">
             {{ operation }}
           </h5>
+          <!-- This table shows the calculated values of the sign bit, exponent, and mantissa -->
           <table class="centered responsive-table striped">
             <thead>
               <tr>
@@ -72,31 +128,8 @@
               </tr>
             </tbody>
           </table>
+          <!-- Here at the end we display the final answer -->
           <h4 :style="{background: 'yellow'}">Final answer = {{ output }}</h4>
-        </div>
-      </div>
-
-      <div
-        v-else-if="showDecimalValue"
-        class="row container center white-background move-down padding z-depth-4"
-      >
-        <div class="col s12">
-          <h3 v-for="operation in binaryToDecimalConversionArr">
-            {{ operation }}
-          </h3>
-          <h1>{{ output }}</h1>
-        </div>
-      </div>
-
-      <div
-        v-else-if="showBinaryValue"
-        class="row container center white-background move-down padding z-depth-4"
-      >
-        <h3 v-for="operation in decimalToBinaryConversionArr">
-          {{ operation }}
-        </h3>
-        <div class="col s12">
-          <h1>{{ output }}</h1>
         </div>
       </div>
     </div>
